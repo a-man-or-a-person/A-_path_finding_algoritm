@@ -17,7 +17,7 @@ def wait_for_exit():
 
 
 def heuristic(start_point, end_point):
-    return m.sqrt((end_point.x - start_point.x) ** 2 + (end_point.y - start_point.y) ** 2)
+    return max(abs(end_point.x - start_point.x), abs(end_point.y - start_point.y))
 
 
 def set_start_and_end_points(grid, x1=0, y1=0, x2=COLS - 1, y2=ROWS - 1):
@@ -48,8 +48,11 @@ def field_init():
     path = []
 
     # Creating a grid
+    Spot.all.clear()
     grid = [[Spot(x, y, screen) for x in range(COLS)] for y in range(ROWS)]
-    [[grid[x][y].add_neighbors(grid) for x in range(COLS)] for y in range(ROWS)]
+    for row in grid:
+        for spot in row:
+            spot.add_neighbors(grid)
     # if input('Do you want to set cords: Yes - type anything, No - press enter'):
     #     start, end = set_start_and_end_points(grid, int(input('Start x')), int(input('Start y')), int(input('End x')),
     #                                       int(input('End y')))
@@ -68,3 +71,23 @@ def find_path(current_block):
         path.append(local)
         local = local.previous
     return path
+
+
+def search_step(open_set, closed_set, end):
+    current = min(open_set, key=lambda spot: spot.f)
+    open_set.remove(current)
+    closed_set.append(current)
+    if current is end:
+        return current
+    for neighbor in current.neighbors:
+        if neighbor.wall or neighbor in closed_set:
+            continue
+        distance = current.g + 1
+        if neighbor not in open_set or distance < neighbor.g:
+            neighbor.g = distance
+            neighbor.previous = current
+            neighbor.h = heuristic(neighbor, end)
+            neighbor.f = neighbor.g + neighbor.h
+            if neighbor not in open_set:
+                open_set.append(neighbor)
+    return current

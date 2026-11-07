@@ -35,17 +35,17 @@ class Spot:
     def add_neighbors(self, grid):
         if self.x > 0:
             self.neighbors.append(grid[self.y][self.x - 1])
-        if self.x < COLS - 1:
+        if self.x < len(grid[0]) - 1:
             self.neighbors.append(grid[self.y][self.x + 1])
         if self.y > 0:
             self.neighbors.append(grid[self.y - 1][self.x])
-        if self.y < ROWS - 1:
+        if self.y < len(grid) - 1:
             self.neighbors.append(grid[self.y + 1][self.x])
         if self.x > 0 and self.y > 0:
             self.neighbors.append(grid[self.y - 1][self.x - 1])
-        if self.x < COLS - 1 and self.y > 0:
+        if self.x < len(grid[0]) - 1 and self.y > 0:
             self.neighbors.append(grid[self.y - 1][self.x + 1])
-        if self.x > 0 and self.y < ROWS - 1:
+        if self.x > 0 and self.y < len(grid) - 1:
             self.neighbors.append(grid[self.y + 1][self.x - 1])
-        if self.x < COLS - 1 and self.y < ROWS - 1:
+        if self.x < len(grid[0]) - 1 and self.y < len(grid) - 1:
             self.neighbors.append(grid[self.y + 1][self.x + 1])
