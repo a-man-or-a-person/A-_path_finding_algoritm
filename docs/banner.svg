@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="A* PATHFINDING">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101c32"/><stop offset="1" stop-color="#172b40"/></linearGradient></defs>
+<rect width="1200" height="300" rx="20" fill="url(#bg)"/>
+<path d="M955 0v300M1015 0v300M1075 0v300M1135 0v300M900 60h300M900 120h300M900 180h300M900 240h300" stroke="#24465d" stroke-width="1"/>
+<path d="M940 230l65-70 55 25 80-105" fill="none" stroke="#68ddc5" stroke-width="5"/>
+<circle cx="1005" cy="160" r="7" fill="#68ddc5"/><circle cx="1060" cy="185" r="7" fill="#68ddc5"/>
+<text x="54" y="70" font-family="Arial,sans-serif" font-size="15" letter-spacing="3" fill="#68ddc5">ALGORITHMS / PYTHON / PYGAME</text>
+<text x="50" y="150" font-family="Arial,sans-serif" font-weight="700" font-size="48" fill="#f3f7fc">A* PATHFINDING</text>
+<text x="54" y="205" font-family="Arial,sans-serif" font-size="21" fill="#b6c9d9">Shortest paths. Eight directions. Verified against BFS.</text>
+</svg>
